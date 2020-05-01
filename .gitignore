@@ -49,3 +49,4 @@ flycheck_*.el
 
 backups/
 config.el
+custom.el
