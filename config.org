@@ -1,5 +1,15 @@
+#+TITLE: My Emacs Literate Configuration
+#+AUTHOR: Caleb McCaffery
+#+PROPERTY: header-args :tangle yes
+
+* Configuration
+:PROPERTIES:
+:VISIBILITY: children
+:END:
+
 * Introduction
 This is my Emacs config using literate programming.
+
 * The Basics
 ** Package Archives
 Add the Melpa repository. This is based on the Melpa install reccomendations
@@ -22,6 +32,7 @@ There are two things you can do about this warning:
   )
 (package-initialize)
 #+END_SRC
+
 ** Use-package
 Use-package is nice little macro by John Wiegley that helps with package configuration
 #+BEGIN_SRC emacs-lisp
@@ -29,6 +40,7 @@ Use-package is nice little macro by John Wiegley that helps with package configu
   (package-refresh-contents)
   (package-install 'use-package))
 #+END_SRC
+
 ** Sanity Defaults
 *** Basic Config Settings
 Personal Info
@@ -129,6 +141,7 @@ Font
 (add-to-list 'default-frame-alist
         '(font . "Ubuntu Mono-16"))
 #+END_SRC
+
 *** Packages that should be provided by Emacs
 Line numbers are relative
 #+BEGIN_SRC emacs-lisp
@@ -147,6 +160,7 @@ Agressive indenting
   :config
   (add-hook 'prog-mode-hook #'aggressive-indent-mode))
 #+END_SRC
+
 *** Functions
 Change window splitting to prefer side by side
 #+BEGIN_SRC emacs-lisp
@@ -172,6 +186,7 @@ Change window splitting to prefer side by side
 
 (setq split-window-preferred-function 'my-split-window-sensibly)
 #+END_SRC
+
 ** Color
 #+BEGIN_SRC emacs-lisp
 (use-package alect-themes
