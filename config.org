@@ -7,197 +7,222 @@
 :VISIBILITY: children
 :END:
 
-* Introduction
-This is my Emacs config using literate programming.
+** Introduction
+ This is my Emacs config using literate programming.
 
-* The Basics
-** Package Archives
-Add the Melpa repository. This is based on the Melpa install reccomendations
-from https://melpa.org
-#+BEGIN_SRC emacs-lisp
-(require 'package)
-(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-                    (not (gnutls-available-p))))
-       (proto (if no-ssl "http" "https")))
-  (when no-ssl (warn "\
-Your version of Emacs does not support SSL connections,
-which is unsafe because it allows man-in-the-middle attacks.
-There are two things you can do about this warning:
-1. Install an Emacs version that does support SSL and be safe.
-2. Remove this warning from your init file so you won't see it again."))
-  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
-  ;; and `package-pinned-packages`. Most users will not need or want to do this.
-  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
-  )
-(package-initialize)
-#+END_SRC
+** The Basics
+*** Package Archives
+ Add the Melpa repository. This is based on the Melpa install reccomendations
+ from https://melpa.org
+ #+BEGIN_SRC emacs-lisp
+ (require 'package)
+ (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                     (not (gnutls-available-p))))
+        (proto (if no-ssl "http" "https")))
+   (when no-ssl (warn "\
+ Your version of Emacs does not support SSL connections,
+ which is unsafe because it allows man-in-the-middle attacks.
+ There are two things you can do about this warning:
+ 1. Install an Emacs version that does support SSL and be safe.
+ 2. Remove this warning from your init file so you won't see it again."))
+   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+   ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+   ;; and `package-pinned-packages`. Most users will not need or want to do this.
+   ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+   )
+ (package-initialize)
+ #+END_SRC
 
-** Use-package
-Use-package is nice little macro by John Wiegley that helps with package configuration
-#+BEGIN_SRC emacs-lisp
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-#+END_SRC
+*** Use-package
+ Use-package is nice little macro by John Wiegley that helps with package configuration
+ #+BEGIN_SRC emacs-lisp
+ (unless (package-installed-p 'use-package)
+   (package-refresh-contents)
+   (package-install 'use-package))
+ #+END_SRC
 
-** Sanity Defaults
-*** Basic Config Settings
-Personal Info
-#+BEGIN_SRC emacs-lisp
-(setq user-full-name "Caleb McCaffery"
-      user-mail-address "irishmac473@icloud.com")
-#+END_SRC
+*** Sanity Defaults
+**** Basic Config Settings
+ Personal Info
+ #+BEGIN_SRC emacs-lisp
+ (setq user-full-name "Caleb McCaffery"
+       user-mail-address "irishmac473@icloud.com")
+ #+END_SRC
 
-Get rid of the tool bar & menu bar
-#+BEGIN_SRC emacs-lisp
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-#+END_SRC
+ Get rid of the tool bar & menu bar
+ #+BEGIN_SRC emacs-lisp
+ (tool-bar-mode -1)
+ (menu-bar-mode -1)
+ #+END_SRC
 
-Silence the annoying notifications
-#+BEGIN_SRC emacs-lisp
-(setq ring-bell-function 'ignore)
-#+END_SRC
+ Silence the annoying notifications
+ #+BEGIN_SRC emacs-lisp
+ (setq ring-bell-function 'ignore)
+ #+END_SRC
 
-Backups
-#+BEGIN_SRC emacs-lisp
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(setq delete-old-versions -1)
-(setq version-control 1)
-(setq vc-make-backup-files t)
-#+END_SRC
+ Backups
+ #+BEGIN_SRC emacs-lisp
+ (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+ (setq delete-old-versions -1)
+ (setq version-control 1)
+ (setq vc-make-backup-files t)
+ #+END_SRC
 
-Keep emacs Custom-settings in separate file.
-#+BEGIN_SRC emacs-lisp
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(when (file-exists-p custom-file)
-(load custom-file))
-#+END_SRC
+ Keep emacs Custom-settings in separate file.
+ #+BEGIN_SRC emacs-lisp
+ (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+ (when (file-exists-p custom-file)
+ (load custom-file))
+ #+END_SRC
 
-Frame startup size
-#+BEGIN_SRC emacs-lisp
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(add-to-list 'default-frame-alist '(fullscreen . fullheight))
-#+END_SRC
+ Frame startup size
+ #+BEGIN_SRC emacs-lisp
+ (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+ (add-to-list 'default-frame-alist '(fullscreen . fullheight))
+ #+END_SRC
 
-Highlight the current line
-#+BEGIN_SRC emacs-lisp
-(global-hl-line-mode)
-#+END_SRC
+ Highlight the current line
+ #+BEGIN_SRC emacs-lisp
+ (global-hl-line-mode)
+ #+END_SRC
 
-Ibuffer
-#+BEGIN_SRC emacs-lisp
-(defalias 'list-buffers 'ibuffer-other-window)
-(setq ibuffer-default-sorting-mode 'major-mode)
-#+END_SRC
+ Ibuffer
+ #+BEGIN_SRC emacs-lisp
+ (defalias 'list-buffers 'ibuffer-other-window)
+ (setq ibuffer-default-sorting-mode 'major-mode)
+ #+END_SRC
 
-Line by line scrolling
-#+BEGIN_SRC emacs-lisp
-(setq scroll-step 1)
-#+END_SRC
+ Line by line scrolling
+ #+BEGIN_SRC emacs-lisp
+ (setq scroll-step 1)
+ #+END_SRC
 
-Set fill column
-#+BEGIN_SRC emacs-lisp
-(setq-default fill-column 72)
-#+END_SRC
+ Set fill column
+ #+BEGIN_SRC emacs-lisp
+ (setq-default fill-column 72)
+ #+END_SRC
 
-Set the default comment column
-#+BEGIN_SRC emacs-lisp
-(setq-default comment-column 72)
-#+END_SRC
+ Set the default comment column
+ #+BEGIN_SRC emacs-lisp
+ (setq-default comment-column 72)
+ #+END_SRC
 
-Turn off word wrap
-#+BEGIN_SRC emacs-lisp
-(setq-default truncate-lines 1)
-#+END_SRC
+ Turn off word wrap
+ #+BEGIN_SRC emacs-lisp
+ (setq-default truncate-lines 1)
+ #+END_SRC
 
-Indent size
-#+BEGIN_SRC emacs-lisp
-(setq standard-indent 2)
-#+END_SRC
+ Indent size
+ #+BEGIN_SRC emacs-lisp
+ (setq standard-indent 2)
+ #+END_SRC
 
-Treat new buffers as text
-#+BEGIN_SRC emacs-lisp
-(setq default-major-mode 'text-mode)
-#+END_SRC
+ Treat new buffers as text
+ #+BEGIN_SRC emacs-lisp
+ (setq default-major-mode 'text-mode)
+ #+END_SRC
 
-Turn off tab
-#+BEGIN_SRC emacs-lisp
-(setq-default indent-tabs-mode nil)
-#+END_SRC
+ Turn off tab
+ #+BEGIN_SRC emacs-lisp
+ (setq-default indent-tabs-mode nil)
+ #+END_SRC
 
-Time in modeline
-#+BEGIN_SRC emacs-lisp
-(setq display-time-24hr-format t)
-(display-time-mode 1)
-#+END_SRC
+ Time in modeline
+ #+BEGIN_SRC emacs-lisp
+ (setq display-time-24hr-format t)
+ (display-time-mode 1)
+ #+END_SRC
 
-Column numbers
-#+BEGIN_SRC emacs-lisp
-(column-number-mode 1)
-#+END_SRC
+ Column numbers
+ #+BEGIN_SRC emacs-lisp
+ (column-number-mode 1)
+ #+END_SRC
 
-Yes & no
-#+BEGIN_SRC emacs-lisp
-(fset 'yes-or-no-p 'y-or-no-p)
-#+END_SRC
+ Yes & no
+ #+BEGIN_SRC emacs-lisp
+ (fset 'yes-or-no-p 'y-or-no-p)
+ #+END_SRC
 
-Font
-#+BEGIN_SRC emacs-lisp
-(add-to-list 'default-frame-alist
-        '(font . "Ubuntu Mono-16"))
-#+END_SRC
+ Font
+ #+BEGIN_SRC emacs-lisp
+ (add-to-list 'default-frame-alist
+         '(font . "Ubuntu Mono-16"))
+ #+END_SRC
 
-*** Packages that should be provided by Emacs
-Line numbers are relative
-#+BEGIN_SRC emacs-lisp
-(use-package linum-relative
-  :ensure t
-  :config
-  (add-hook 'text-mode-hook 'linum-relative-mode)
-  (add-hook 'prog-mode-hook 'linum-relative-mode)
-  (setq linum-relative-current-symbol ""))
-#+END_SRC
+**** Packages that should be provided by Emacs
+ Line numbers are relative
+ #+BEGIN_SRC emacs-lisp
+ (use-package linum-relative
+   :ensure t
+   :config
+   (add-hook 'text-mode-hook 'linum-relative-mode)
+   (add-hook 'prog-mode-hook 'linum-relative-mode)
+   (setq linum-relative-current-symbol ""))
+ #+END_SRC
 
-Agressive indenting
-#+BEGIN_SRC emacs-lisp
-(use-package aggressive-indent
-  :ensure t
-  :config
-  (add-hook 'prog-mode-hook #'aggressive-indent-mode))
-#+END_SRC
+ Agressive indenting
+ #+BEGIN_SRC emacs-lisp
+ (use-package aggressive-indent
+   :ensure t
+   :config
+   (add-hook 'prog-mode-hook #'aggressive-indent-mode))
+ #+END_SRC
 
-*** Functions
-Change window splitting to prefer side by side
-#+BEGIN_SRC emacs-lisp
-(defun my-split-window-sensibly (&optional window)
-  (let ((window (or window (selected-window))))
-    (or (and (window-splittable-p window t)
-             ;; Split window horizontally.
-             (with-selected-window window
-               (split-window-right)))
-        (and (window-splittable-p window)
-             ;; Split window vertically.
-             (with-selected-window window
-               (split-window-below)))
-        (and (eq window (frame-root-window (window-frame window)))
-             (not (window-minibuffer-p window))
-             ;; If WINDOW is the only window on its frame and is not the
-             ;; minibuffer window, try to split it horizontally disregarding
-             ;; the value of `split-width-threshold'.
-             (let ((split-width-threshold 0))
-               (when (window-splittable-p window t)
-                 (with-selected-window window
-                   (split-window-right))))))))
+**** Functions
+ Change window splitting to prefer side by side
+ #+BEGIN_SRC emacs-lisp
+ (defun my-split-window-sensibly (&optional window)
+   (let ((window (or window (selected-window))))
+     (or (and (window-splittable-p window t)
+              ;; Split window horizontally.
+              (with-selected-window window
+                (split-window-right)))
+         (and (window-splittable-p window)
+              ;; Split window vertically.
+              (with-selected-window window
+                (split-window-below)))
+         (and (eq window (frame-root-window (window-frame window)))
+              (not (window-minibuffer-p window))
+              ;; If WINDOW is the only window on its frame and is not the
+              ;; minibuffer window, try to split it horizontally disregarding
+              ;; the value of `split-width-threshold'.
+              (let ((split-width-threshold 0))
+                (when (window-splittable-p window t)
+                  (with-selected-window window
+                    (split-window-right))))))))
 
-(setq split-window-preferred-function 'my-split-window-sensibly)
-#+END_SRC
+ (setq split-window-preferred-function 'my-split-window-sensibly)
+ #+END_SRC
 
-** Color
+*** Color
 #+BEGIN_SRC emacs-lisp
 (use-package alect-themes
   :ensure t
+)
+
+(use-package doom-themes
+  :ensure
   :config
-  (load-theme 'alect-black t))
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t ;; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ;; if nil, italics is universally disabled
+  (load-theme 'doom-one t)
+  ;; flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+
+  ;;enable custom neotree theme (all-the-icons must be installed)
+  ;;(doom-themes-neotree-config)
+  ;; or for treemacs users
+  ;;(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  ;;(doom-themes-treemacs-config)
+
+  ;; corrects (and imporves) org-mode's native fontification
+  (doom-themes-org-config))
+
+(use-package all-the-icons)
+
+(use-package doom-modeline
+  :ensure t
+  :init
+  (doom-modeline-mode 1))
 #+END_SRC
