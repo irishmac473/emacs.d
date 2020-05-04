@@ -1,6 +1,6 @@
 #+TITLE: My Emacs Literate Configuration
-#+AUTHOR: Caleb McCaffery
 #+PROPERTY: header-args :tangle yes
+#+AUTHOR: Caleb McCaffery
 
 * Configuration
 :PROPERTIES:
@@ -194,7 +194,7 @@
  (setq split-window-preferred-function 'my-split-window-sensibly)
  #+END_SRC
 
-*** Color
+*** Visuals
 #+BEGIN_SRC emacs-lisp
 (use-package alect-themes
   :ensure t
