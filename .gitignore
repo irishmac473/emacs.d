@@ -48,5 +48,5 @@ flycheck_*.el
 /network-security.data
 
 backups/
-config.el
+README.el
 custom.el
