@@ -50,3 +50,4 @@ flycheck_*.el
 backups/
 README.el
 custom.el
+recentf
