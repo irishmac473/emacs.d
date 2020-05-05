@@ -1,10 +1,7 @@
 #+TITLE: My Emacs Literate Configuration
 #+PROPERTY: header-args :tangle yes
 #+AUTHOR: Caleb McCaffery
-
-:PROPERTIES:
-:VISIBILITY: children
-:END:
+#+STARTUP: content
 
 * Configuration
 ** Introduction
