@@ -230,13 +230,11 @@ Disable splash screen and startup message
 #+END_SRC
 
 *** Buffers
-Use ido and ibuffer for now. Probably end up switching to something else
+Use ido for now. Probably end up switching to something else
 #+BEGIN_SRC emacs-lisp
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
-
-(defalias 'list-buffers 'ibuffer-other-window)
 #+END_SRC
 
 ** Packages
