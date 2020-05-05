@@ -54,6 +54,12 @@
  (menu-bar-mode -1)
  #+END_SRC
 
+Disable splash screen and startup message
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t) 
+(setq initial-scratch-message nil)
+#+END_SRC
+
  Silence the annoying notifications
  #+BEGIN_SRC emacs-lisp
  (setq ring-bell-function 'ignore)
