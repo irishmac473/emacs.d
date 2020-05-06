@@ -229,7 +229,7 @@ Disable splash screen and startup message
   (doom-modeline-mode 1))
 #+END_SRC
 
-*** Buffers
+*** Ido
 Use ido for now. Probably end up switching to something else
 #+BEGIN_SRC emacs-lisp
 (setq ido-enable-flex-matching t)
@@ -283,4 +283,12 @@ An extensible emacs startup screen showing you what’s most important.
   :ensure t
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+END_SRC
+
+** Macros
+#+BEGIN_SRC emacs-lisp
+(fset 'elisp-block
+   [?# ?+ ?B ?E ?G ?I ?N ?_ ?S ?R ?C ?  ?e ?m ?a ?c ?s ?- ?l ?i ?s ?p return return ?# ?+ ?E ?N ?D ?_ ?S ?R ?C ?\C-p])
+(global-set-key (kbd "C-c s") 'elisp-block)
+(put 'elisp-block 'kmacro t)
 #+END_SRC
