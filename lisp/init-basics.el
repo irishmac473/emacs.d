@@ -1,4 +1,10 @@
-
+;; #####################################################################
+;; ### Author: Caleb McCaffery <irishmac473@icloud.com>              ###
+;; ### File: init-basics.el                                          ###
+;; #####################################################################
+;; ### Provides Configurations, packages and functions that make     ###
+;; ### Emacs behave the way I like.                                  ###
+;; #####################################################################
 
 ;; Personal Info
 (setq user-full-name "Caleb McCaffery"
