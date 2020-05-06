@@ -79,10 +79,10 @@
              '(font . "Ubuntu Mono-16"))
 
 
-;; Use ido for now. Probably end up switching to something else
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
+;;  Using Swiper now
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-everywhere t)
+;; (ido-mode 1)
 
 
 ;; Packages that IMHO shoud be part of Emacs
