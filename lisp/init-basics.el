@@ -73,12 +73,14 @@
 (column-number-mode 1)
 
 ;; Yes & no
-;; (fset 'yes-or-no-p 'y-or-no-p)
+(fset 'yes-or-no-p 'y-or-no-p)
 
 ;; Font
 (add-to-list 'default-frame-alist
              '(font . "Ubuntu Mono-16"))
 
+;; Show relative line numbers
+(setq-default display-line-numbers 'relative)
 
 ;;  Using Swiper now
 ;; (setq ido-enable-flex-matching t)
@@ -87,14 +89,6 @@
 
 
 ;; Packages that IMHO shoud be part of Emacs
-
-;; Line numbers are relative
-(use-package linum-relative
-  :ensure t
-  :config
-  (add-hook 'text-mode-hook 'linum-relative-mode)
-  (add-hook 'prog-mode-hook 'linum-relative-mode)
-  (setq linum-relative-current-symbol ""))
 
 ;; Agressive indenting
 (use-package aggressive-indent
