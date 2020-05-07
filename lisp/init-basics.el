@@ -13,6 +13,7 @@
 ;; Get rid of the tool bar & menu bar
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; Disable splash screen and startup message
 (setq inhibit-startup-message t) 
@@ -72,7 +73,7 @@
 (column-number-mode 1)
 
 ;; Yes & no
-(fset 'yes-or-no-p 'y-or-no-p)
+;; (fset 'yes-or-no-p 'y-or-no-p)
 
 ;; Font
 (add-to-list 'default-frame-alist
