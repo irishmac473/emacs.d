@@ -80,7 +80,7 @@
              '(font . "Ubuntu Mono-16"))
 
 ;; Show relative line numbers
-(setq-default display-line-numbers 'relative)
+(add-hook 'prog-mode-hook (lambda () (setq display-line-numbers 'relative)))
 
 ;;  Using Swiper now
 ;; (setq ido-enable-flex-matching t)
