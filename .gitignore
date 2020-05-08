@@ -53,3 +53,4 @@ README.el
 custom.el
 recentf
 ido.last
+.cache/

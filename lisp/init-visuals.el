@@ -27,8 +27,8 @@
   ;;enable custom neotree theme (all-the-icons must be installed)
   ;;(doom-themes-neotree-config)
   ;; or for treemacs users
-  ;;(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-  ;;(doom-themes-treemacs-config)
+  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  (doom-themes-treemacs-config)
 
   ;; corrects (and imporves) org-mode's native fontification
   (doom-themes-org-config))
