@@ -37,7 +37,7 @@
 (require 'init-dashboard)
 (require 'init-org)
 (require 'init-ace)
-(require 'init-swiper)
+(require 'init-search)
 
 ;; Packages don't get their own file till I need to add some configs
 

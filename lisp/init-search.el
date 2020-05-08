@@ -1,14 +1,16 @@
 ;; #####################################################################
 ;; ### Author: Caleb McCaffery <irishmac473@icloud.com>              ###
-;; ### File: init-swiper.el                                          ###
+;; ### File: init-search.el                                          ###
 ;; #####################################################################
-;; ### Provides the swiper, ivy and counsel packages                 ###
+;; ### Provides the swiper, ivy, avy and counsel packages            ###
 ;; #####################################################################
 
 ;; Ivy, a generic completion mechanism for Emacs.
 ;; Counsel, a collection of Ivy-enhanced versions of common Emacs
 ;; commands.
 ;; Swiper, an Ivy-enhanced alternative to isearch.
+;; Avy, a package for jumping to visible text using a char-based
+;; decision tree.
 
 (use-package counsel
   :ensure t
@@ -42,4 +44,9 @@
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
     ))
 
-(provide 'init-swiper)
+(use-package avy
+  :ensure t
+  :bind (("C-'" . avy-goto-char-timer)
+         ("C-:" . avy-goto-char)))
+
+(provide 'init-search)
