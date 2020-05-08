@@ -54,3 +54,4 @@ custom.el
 recentf
 ido.last
 .cache/
+transient/
