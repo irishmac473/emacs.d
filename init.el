@@ -40,6 +40,7 @@
 (require 'init-search)
 (require 'init-completion)
 (require 'init-git)
+(require 'init-projectile)
 
 ;; Packages don't get their own file till I need to add some configs
 

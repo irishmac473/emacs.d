@@ -15,7 +15,6 @@
   :ensure t
   :config
   (global-git-gutter-mode t)
-  (git-gutter:linum-setup)
   (custom-set-variables
    '(git-gutter:modified-sign "  ")
    '(git-gutter:added-sign "++")

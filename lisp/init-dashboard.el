@@ -17,8 +17,9 @@
   :config
   (setq dashboard-banner-logo-title "Get Shit Done")
   (setq dashboard-startup-banner "~/.emacs.d/emacs-sexy.png")
-  (setq dashboard-items '((recents  . 10)
-                          (bookmarks . 10)))
+  (setq dashboard-items '((recents  . 5)
+                          (projects . 5)
+                          (agenda . 5)))
   (dashboard-setup-startup-hook))
 
 
