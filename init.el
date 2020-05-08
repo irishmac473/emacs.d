@@ -39,6 +39,7 @@
 (require 'init-ace)
 (require 'init-search)
 (require 'init-completion)
+(require 'init-git)
 
 ;; Packages don't get their own file till I need to add some configs
 
