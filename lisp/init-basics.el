@@ -96,6 +96,9 @@
   :config
   (add-hook 'prog-mode-hook #'aggressive-indent-mode))
 
+(use-package hide-mode-line
+  :ensure t)
+
 ;; Functions
 
 ;; Change window splitting to prefer side by side
