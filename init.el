@@ -33,7 +33,7 @@
 ;; Packages
 ;; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-(require 'init-which-key)
+(require 'init-key-bindings)
 (require 'init-dashboard)
 (require 'init-org)
 (require 'init-ace)
