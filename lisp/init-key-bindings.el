@@ -22,12 +22,18 @@
     :prefix "M-SPC")
   (my-leader-def
     "SPC" 'counsel-M-x
+    "0" 'delete-windows
+    "1" 'delete-other-windows
     "<" 'ivy-switch-buffer
+    ">" 'ace-window
     "g" '(:ignore t :which-key "Git")
     "gs" 'magit-status
     "o" '(:ignore t :which-key "Org")
     "oj" '(:ignore t :which-key "Org-Journal")
     "ojn" 'org-journal-new-entry
+    "or" '(:ignore t :which-key "Org-roam")
+    "orn" 'org-roam-insert
+    "orr" 'org-roam
     ))
 
 (provide 'init-key-bindings)
