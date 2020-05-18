@@ -42,6 +42,7 @@
 (require 'init-git)
 (require 'init-projectile)
 (require 'init-treemacs)
+(require 'init-shell)
 
 ;; Packages don't get their own file till I need to add some configs
 

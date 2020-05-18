@@ -24,6 +24,7 @@
     "SPC" 'counsel-M-x
     "0" 'delete-windows
     "1" 'delete-other-windows
+    "'" 'vterm-other-window
     "<" 'ivy-switch-buffer
     ">" 'ace-window
     "g" '(:ignore t :which-key "Git")
