@@ -11,28 +11,15 @@
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
+(add-to-list 'load-path "~/Dropbox/emacs")
 
 ;; =====================================================================
 ;; 2.0 Load configs for various settings, features and modes
 ;; =====================================================================
 
-;; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-;; Bootstrap config
-;; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 (require 'init-elpa)
-
-;; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-;; UX - Make Emacs usable
-;; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 (require 'init-basics)
 (require 'init-visuals)
-
-;; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-;; Packages
-;; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 (require 'init-key-bindings)
 (require 'init-dashboard)
 (require 'init-org)
@@ -43,6 +30,7 @@
 (require 'init-projectile)
 (require 'init-treemacs)
 (require 'init-shell)
+(require 'init-secrets)
 
 ;; Packages don't get their own file till I need to add some configs
 
