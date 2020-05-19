@@ -72,9 +72,6 @@
 ;; Column numbers
 (column-number-mode 1)
 
-;; Yes & no
-(fset 'yes-or-no-p 'y-or-no-p)
-
 ;; Font
 (add-to-list 'default-frame-alist
              '(font . "Ubuntu Mono-16"))
