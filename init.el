@@ -38,6 +38,10 @@
 (use-package try
   :ensure t)
 
+;; Counsel M-X will use smex to show command history
+(use-package smex
+  :ensure t)
+
 ;; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ;; Languages
 ;; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -39,13 +39,19 @@
     "ff" 'counsel-find-file
     "g" '(:ignore t :which-key "Git")
     "gs" 'magit-status
+    "h" '(:ignore t :which-key "Help")
+    "hk" 'describe-key
     "o" '(:ignore t :which-key "Org")
-    "oj" '(:ignore t :which-key "Org-Journal")
-    "ojn" 'org-journal-new-entry
-    "or" '(:ignore t :which-key "Org-roam")
-    "orn" 'org-roam-insert
-    "orr" 'org-roam
+    "oa" 'org-agenda
+    "oc" 'org-capture
+    "or" 'org-refile
+    "os" 'org-schedule
+    "ot" 'org-set-tags-command
+    "o TAB" 'org-todo
     "s" '(:ignore t :which-key "Search")
+    "sg" 'avy-goto-char
+    "sG" 'avy-goto-char-timer
+    "si" 'imenu
     "ss" 'swiper-isearch
     "t" '(:ignore t :which-key "Terminals")
     "ta" 'ansi-term
