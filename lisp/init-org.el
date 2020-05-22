@@ -13,8 +13,8 @@
 (setq org-default-notes-file "~/Dropbox/org/00-INBOX.org")
 
 ;; Tell agenda where to look 
-(setq org-agenda-files (quote ("~/Dropbox/org/00-INBOX.org"
-                               "~/Dropbox/org/01-MYLIFE.org"
+(setq org-agenda-files (quote ("~/Dropbox/org/01-MYLIFE.org"
+                               "~/Dropbox/org/00-INBOX.org"
                                "~/Dropbox/org/02-REFERENCE.org")))
 
 ;; Different states for todos
@@ -24,7 +24,7 @@
 
 ;; Trying out some different todo faces
 (setq org-todo-keyword-faces
-      (quote (("TODO" :foreground "red" :weight bold)
+      (quote (("TODO" :foreground "yellow" :weight bold)
               ("NEXT" :foreground "blue" :weight bold)
               ("DONE" :foreground "forest green" :weight bold)
               ("WAITING" :foreground "orange" :weight bold)
@@ -39,6 +39,7 @@
               (done ("WAITING") ("SOMEDAY"))
               ("TODO" ("WAITING") ("CANCELLED") ("SOMEDAY"))
               ("NEXT" ("WAITING") ("CANCELLED") ("SOMEDAY"))
+              ("TODAY" ("WAITING") ("CANCELLED") ("SOMEDAY"))
               ("DONE" ("WAITING") ("CANCELLED") ("SOMEDAY")))))
 
 ;; Tags with fast selection keys
@@ -60,7 +61,7 @@
                             ("NOTE" . ?n)
                             ("CANCELLED" . ?c)
                             ("PROJECT" . ?p)
-                            ("FLAGGED" . ??))))
+                            ("ROUTINE" . ?r))))
 
 ;; Allow setting single tags without the menu
 (setq org-fast-tag-selection-single-key (quote expert))
@@ -70,10 +71,6 @@
 
 ;; We want the ability to create new parents when refiling
 (setq org-refile-allow-creating-parent-nodes 'confirm)
-
-(setq org-refile-use-outline-path 'file)
-
-(setq org-outline-path-complete-in-steps nil)
 
 (setq org-capture-templates
       '(("j" "Journal" entry (file+olp+datetree "~/Dropbox/org/journal.org") "* %i\n %?\n")))
@@ -87,28 +84,63 @@
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-;; Org-roam
-;; (use-package org-roam  :ensure t
-;;   :config
-;;   (setq org-roam-directory "~/Dropbox/org")
-;;   (add-hook 'after-init-hook 'org-roam-mode)
-;;   (setq org-roam-completion-system 'ivy)
-;;   )
-
-;; (use-package company-org-roam
-;;   :after org-roam
-;;   :config
-;;   (push 'company-org-roam company-backends))
-
-;; (use-package org-journal
-;;   :ensure t
-;;   :defer t
-;;   :custom
-;;   (org-journal-date-prefix "#+TITLE: ")
-;;   (org-journal-file-format "%Y-%m-%d.org")
-;;   (org-journal-dir "~/Dropbox/org")
-;;   (org-journal-date-format "%A, %d %B %Y")
-;;   (org-journal-enable-agenda-intergration t)
-;;   (org-journal-update-org-agenda-files))
+;; Super charge your agenda view with SUPER AGENDA!!!
+(use-package org-super-agenda
+  :after org-agenda
+  :init
+  (setq org-agenda-skip-scheduled-if-done t
+        org-agenda-skip-deadline-if-done t
+        org-agenda-include-deadlines t
+        org-agenda-block-separator nil
+        org-agenda-compact-blocks t
+        org-agenda-start-day nil ;; i.e. today
+        org-agenda-span 1
+        org-agenda-start-on-weekday nil)
+  (setq org-agenda-custom-commands
+        '(("c" "Super view"
+           ((agenda "" ((org-agenda-overriding-header "")
+                        (org-super-agenda-groups
+                         '((:name "Today"
+                                  :time-grid t
+                                  :date today
+                                  :order 1)))))
+            (alltodo "" ((org-agenda-overriding-header "")
+                         (org-super-agenda-groups
+                          '((:log t)
+                            (:name "To refile"
+                                   :file-path "00-INBOX\\.org")
+                            (:name "Important"
+                                   :priority "A"
+                                   :order 1)
+                            (:name "Due Today"
+                                   :deadline today
+                                   :order 2)
+                            (:name "Next to do"
+                                   :todo "NEXT"
+                                   :order 3)
+                            (:name "Overdue"
+                                   :deadline past
+                                   :order 4)
+                            (:name "Due Soon"
+                                   :deadline future
+                                   :order 5)
+                            (:name "Task"
+                                   :priority "B"
+                                   :order 6)
+                            (:name "Projects"
+                                   :children t
+                                   :order 7)
+                            (:name "Waiting"
+                                   :todo "WAITING"
+                                   :order 8)
+                            (:name "Trivial"
+                                   :priority "C"
+                                   :order 9)
+                            (:name "Someday/Maybe"
+                                   :todo "SOMEDAY"
+                                   :order 99)
+                            (:discard (:tag ("ROUTINE")))))))))))
+  :config
+  (org-super-agenda-mode))
 
 (provide 'init-org)

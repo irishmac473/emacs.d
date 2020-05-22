@@ -44,6 +44,9 @@
     "o" '(:ignore t :which-key "Org")
     "oa" 'org-agenda
     "oc" 'org-capture
+    "od" 'org-deadline
+    "oP" 'org-set-property
+    "op" 'org-priority
     "or" 'org-refile
     "os" 'org-schedule
     "ot" 'org-set-tags-command
