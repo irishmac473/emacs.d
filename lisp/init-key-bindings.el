@@ -62,6 +62,9 @@
     "art" 'org-roam-dailies-today
     "b" '(:ignore t :which-key "Buffers")
     "bb" 'ivy-switch-buffer
+    "bd" 'kill-buffer
+    "bn" 'next-buffer
+    "bp" 'previous-buffer
     "c" '(:ignore t :which-key "Comments")
     "cc" 'comment-line
     "f" '(:ignore t :which-key "Files")
@@ -81,8 +84,10 @@
     "tt" 'term
     "tv" 'vterm
     "w" '(:ignore t :which-key "Windows")
-    "wd" 'delete-window
-    "wo" 'delete-other-windows
+    "w/" 'split-window-right
+    "w-" 'split-window-below
+    "w0" 'delete-window
+    "wd" 'delete-other-windows
     "ww" 'ace-window
     ))
 
