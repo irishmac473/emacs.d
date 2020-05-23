@@ -31,6 +31,35 @@
     "<" 'ivy-switch-buffer
     ">" 'ace-window
     "/" 'counsel-find-file
+    "a" '(:ignore t :which-key "Apps")
+    "aj" '(:ignore t :which-key "Journal")
+    "ajj" 'org-journal-new-entry
+    "ajo" 'org-journal-open-entry
+    "ajS" 'org-journal-search-forever
+    "ajs" 'org-journal-new-scheduled-entry
+    "am" '(:ignore t :which-key "Mu4e")
+    "amm" 'mu4e
+    "ao" '(:ignore t :which-key "Org")
+    "ao[" 'org-previous-link
+    "ao]" 'org-next-link
+    "aoa" 'org-agenda
+    "aoc" 'org-capture
+    "aod" 'org-deadline
+    "aoP" 'org-set-property
+    "aop" 'org-priority
+    "aoR" 'org-refile
+    "aos" 'org-schedule
+    "aot" 'org-set-tags-command
+    "ao TAB" 'org-todo
+    "ao RET" 'org-open-at-point
+    "ar" '(:ignore t :which-key "Roam")
+    "arc" 'org-roam-capture
+    "ard" 'org-roam-db-build-cache
+    "arf" 'org-roam-find-file
+    "arg" 'org-roam-graph
+    "ari" 'org-roam-insert
+    "arr" 'org-roam
+    "art" 'org-roam-dailies-today
     "b" '(:ignore t :which-key "Buffers")
     "bb" 'ivy-switch-buffer
     "c" '(:ignore t :which-key "Comments")
@@ -41,16 +70,6 @@
     "gs" 'magit-status
     "h" '(:ignore t :which-key "Help")
     "hk" 'describe-key
-    "o" '(:ignore t :which-key "Org")
-    "oa" 'org-agenda
-    "oc" 'org-capture
-    "od" 'org-deadline
-    "oP" 'org-set-property
-    "op" 'org-priority
-    "or" 'org-refile
-    "os" 'org-schedule
-    "ot" 'org-set-tags-command
-    "o TAB" 'org-todo
     "s" '(:ignore t :which-key "Search")
     "sg" 'avy-goto-char
     "sG" 'avy-goto-char-timer
@@ -68,3 +87,6 @@
     ))
 
 (provide 'init-key-bindings)
+
+
+

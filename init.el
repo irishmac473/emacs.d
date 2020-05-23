@@ -31,6 +31,7 @@
 (require 'init-treemacs)
 (require 'init-shell)
 (require 'init-secrets)
+(require 'init-mail)
 
 ;; Packages don't get their own file till I need to add some configs
 
