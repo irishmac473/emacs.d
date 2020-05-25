@@ -46,4 +46,13 @@
   :init
   (doom-modeline-mode 1))
 
+;; ============================================================================
+;; 3.0 Other Niceties
+;; ============================================================================
+
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
 (provide 'init-visuals)
