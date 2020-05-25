@@ -32,7 +32,10 @@
     ">" 'ace-window
     "/" 'counsel-find-file
     "a" '(:ignore t :which-key "Apps")
+    "ac" 'calculator
     "aj" '(:ignore t :which-key "Journal")
+    "ajb" 'org-mark-ring-goto
+    "ajc" 'org-journal-carryover
     "ajj" 'org-journal-new-entry
     "ajo" 'org-journal-open-entry
     "ajS" 'org-journal-search-forever
@@ -92,6 +95,3 @@
     ))
 
 (provide 'init-key-bindings)
-
-
-

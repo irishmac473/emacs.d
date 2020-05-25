@@ -10,7 +10,7 @@
 ;; =====================================================================
 
 (setq org-directory "~/Dropbox/org")
-(setq org-default-notes-file "~/Dropbox/org/00-INBOX.org")
+(setq org-default-notes-file "~/Dropbox/org/roam/00-INBOX.org")
 
 ;; Tell agenda where to look 
 ;; (setq org-agenda-files (quote ("~/Dropbox/org/01-MYLIFE.org"
@@ -19,8 +19,10 @@
 
 ;; Different states for todos
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "SOMEDAY(s)" "|" "DONE(d)")
-              (sequence "WAITING(w@/!)" "|" "CANCELED(c@/!)"))))
+      (quote ((sequence "TODO(t)" "|" "DONE(d)" "CANCELED(c@/!)"))))
+;; (setq org-todo-keywords
+;;       (quote ((sequence "TODO(t)" "NEXT(n)" "SOMEDAY(s)" "|" "DONE(d)")
+;;               (sequence "WAITING(w@/!)" "|" "CANCELED(c@/!)"))))
 
 ;; Trying out some different todo faces
 (setq org-todo-keyword-faces
@@ -58,13 +60,13 @@
                             (:endgroup)
                             ("WAITING" . ?w)
                             ("SOMEDAY" . ?s)
-                            ("NOTE" . ?n)
+                            ("NEXT" . ?n)
                             ("CANCELLED" . ?c)
                             ("PROJECT" . ?p)
                             ("ROUTINE" . ?r))))
 
 ;; Allow setting single tags without the menu
-(setq org-fast-tag-selection-single-key (quote expert))
+;; (setq org-fast-tag-selection-single-key (quote expert))
 
 ;; ;; Set ability to refile into any agenda file 5 nodes deep
 ;; (setq org-refile-targets '((org-agenda-files :maxlevel . 5)))
@@ -140,7 +142,7 @@
                                    :deadline today
                                    :order 2)
                             (:name "Next to do"
-                                   :todo "NEXT"
+                                   :tag "NEXT"
                                    :order 3)
                             (:name "Overdue"
                                    :deadline past
@@ -155,13 +157,13 @@
                                    :children t
                                    :order 7)
                             (:name "Waiting"
-                                   :todo "WAITING"
+                                   :tag "WAITING"
                                    :order 8)
                             (:name "Trivial"
                                    :priority "C"
                                    :order 9)
                             (:name "Someday/Maybe"
-                                   :todo "SOMEDAY"
+                                   :tag "SOMEDAY"
                                    :order 99)
                             (:discard (:tag ("ROUTINE")))))))))))
   :config
