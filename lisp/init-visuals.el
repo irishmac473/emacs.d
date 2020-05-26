@@ -50,9 +50,21 @@
 ;; 3.0 Other Niceties
 ;; ============================================================================
 
+;; Pretty matching parens
 (use-package rainbow-delimiters
   :ensure t
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+;; Highlight indention levels
+(use-package highlight-indent-guides
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (setq highlight-indent-guides-method 'character)
+  (setq highlight-indent-guides-character ?\|)
+  (setq highlight-indent-guides-responsive 'stack)
+  (setq highlight-indent-guides-delay 0))
+
 
 (provide 'init-visuals)
