@@ -13,8 +13,7 @@
 (setq org-default-notes-file "~/Dropbox/org/00-INBOX.org")
 
 ;; Tell agenda where to look 
-(setq org-agenda-files (quote ("~/Dropbox/org/01-MYLIFE.org"
-                               "~/Dropbox/org/00-INBOX.org")))
+(setq org-agenda-files (quote ("~/Dropbox/org")))
 
 
 ;; Different states for todos
@@ -47,7 +46,7 @@
                             ("@work" . ?w)
                             ("@home" . ?h)
                             ("@call" . ?c)
-                            ("@email" . ?e)
+                            ("@email" . ?E)
                             ("@computer" . ?c)
                             ("@iOS" . ?i)
                             ("@mail" . ?M)
@@ -96,16 +95,16 @@
   :config
   (push 'company-org-roam company-backends))
 
-;; (use-package org-journal
-;;   :custom
-;;   (org-journal-dir "~/Dropbox/org/roam/")
-;;   (org-journal-file-format "%Y%m%d.org")
-;;   (org-journal-date-prefix "#+TITLE: ")
-;;   (org-journal-date-format "%A, %B %d %Y")
-;;   (org-journal-time-prefix "* ")
-;;   :config
-;;   (setq org-journal-enable-agenda-integration t)
-;;   (setq org-journal-enable-cache t))
+(use-package org-journal
+  :custom
+  (org-journal-dir "~/Dropbox/org")
+  (org-journal-file-format "%Y%m%d.org")
+  (org-journal-date-prefix "#+TITLE: ")
+  (org-journal-date-format "%A, %B %d %Y")
+  (org-journal-time-prefix "* ")
+  :config
+  (setq org-journal-enable-agenda-integration t)
+  (setq org-journal-enable-cache t))
 
 ;; Super charge your agenda view with SUPER AGENDA!!!
 (use-package org-super-agenda
@@ -130,8 +129,6 @@
             (alltodo "" ((org-agenda-overriding-header "")
                          (org-super-agenda-groups
                           '((:log t)
-                            (:name "To refile"
-                                   :file-path "00-INBOX\\.org")
                             (:name "Important"
                                    :priority "A"
                                    :order 1)
@@ -139,7 +136,7 @@
                                    :deadline today
                                    :order 2)
                             (:name "Next to do"
-                                   :tag "NEXT"
+                                   :todo "NEXT"
                                    :order 3)
                             (:name "Overdue"
                                    :deadline past
@@ -147,22 +144,20 @@
                             (:name "Due Soon"
                                    :deadline future
                                    :order 5)
-                            (:name "Task"
-                                   :priority "B"
-                                   :order 6)
                             (:name "Projects"
                                    :children t
+                                   :order 6)
+                            (:name "Task"
+                                   :and (:todo ("TODO")
+                                               :not (:tag ("ROUTINE")))
                                    :order 7)
                             (:name "Waiting"
                                    :tag "WAITING"
                                    :order 8)
-                            (:name "Trivial"
-                                   :priority "C"
-                                   :order 9)
                             (:name "Someday/Maybe"
-                                   :tag "SOMEDAY"
+                                   :todo "SOMEDAY"
                                    :order 99)
-                            (:discard (:tag ("ROUTINE")))))))))))
+                            (:discard (:tag "ROUTINE"))))))))))
   :config
   (org-super-agenda-mode))
 
