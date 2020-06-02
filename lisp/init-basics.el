@@ -72,6 +72,9 @@
 ;; Column numbers
 (column-number-mode 1)
 
+;; Remember where point was in file
+(save-place-mode 1)
+
 ;; Font
 (add-to-list 'default-frame-alist
              '(font . "Ubuntu Mono-16"))
