@@ -43,9 +43,9 @@
 ;; Tags with fast selection keys
 (setq org-tag-alist (quote ((:startgroup)
                             ("@errand" . ?e)
-                            ("@work" . ?w)
+                            ("@work" . ?W)
                             ("@home" . ?h)
-                            ("@call" . ?c)
+                            ("@call" . ?p)
                             ("@email" . ?E)
                             ("@computer" . ?c)
                             ("@iOS" . ?i)
@@ -57,8 +57,8 @@
                             ("WAITING" . ?w)
                             ("SOMEDAY" . ?s)
                             ("NEXT" . ?n)
-                            ("CANCELLED" . ?c)
-                            ("PROJECT" . ?p)
+                            ("CANCELLED" . ?C)
+                            ("PROJECT" . ?P)
                             ("ROUTINE" . ?r))))
 
 ;; Allow setting single tags without the menu
@@ -149,11 +149,15 @@
                                    :order 6)
                             (:name "Task"
                                    :and (:todo ("TODO")
-                                               :not (:tag ("ROUTINE")))
+                                               :not (:tag ("ROUTINE" "HABIT")))
                                    :order 7)
                             (:name "Waiting"
                                    :tag "WAITING"
                                    :order 8)
+                            (:name "Habits"
+                                   :habit t
+                                   :tag "HABIT"
+                                   :order 9)
                             (:name "Someday/Maybe"
                                    :todo "SOMEDAY"
                                    :order 99)
