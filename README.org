@@ -1,0 +1,1 @@
+/Users/irishmac473/.emacs.d/init.org
