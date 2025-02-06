@@ -5,3 +5,4 @@ early-init.el
 elpa/
 init.el
 init.elc
+eln-cache/
